@@ -12,6 +12,7 @@ I am Tomáš Kašpárek, software engineering manager with extensive software en
 -   [vulnerability-engine](https://github.com/RedHatInsights/vulnerability-engine) - backend for automatic detection of security vulnerabilities featured in the Red Hat Insights application bundle. Containerized Python application broken into a set of smaller components which are being run in the OpenShift cluster.
 -   [VMaaS](https://github.com/RedHatInsights/vmaas) - datasource for vulnerability-engine. Containerized Python application broken into a set of smaller components which are being run in the OpenShift cluster.
 -   [vulnerability-ui](https://github.com/tkasparek/vulnerability-ui) - JavaScript UI for [vulnerability-engine](https://github.com/RedHatInsights/vulnerability-engine) written in React, utilizing [Patternfly React](https://www.patternfly.org/v4/get-started/develop/) library.
+-   [gh-bot](https://github.com/tkasparek/gh-bot) - Github bot written in TypeScript which saves us time by automatically creating and assigning releases in our Jira by parsing git history.
 -   Tens of other contributions to other open source projects such from bug fixes and features to CVE fixes.
 
 ## Other tech interests
