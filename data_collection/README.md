@@ -1,4 +1,4 @@
-# Data storing
+# Data collection
 
 Data for the application is being scraped everyday from Czech Hydrometeorological Institute and stored in a PostgreSQL database.
 
@@ -16,7 +16,7 @@ On RHEL8, CentOS8 or Oracle Linux 8 modularity can provide different versions of
 sudo dnf module enable postgresql:12
 ```
 
-The instance running on [tkasparek-rain.duckdns.org]() is running on PostgreSQL 12 on Oracle Linux 8.
+The instance running on [https://tkasparek-rain.duckdns.org](https://tkasparek-rain.duckdns.org) is running on PostgreSQL 12 on Oracle Linux 8.
 
 ## Creating database schema
 
@@ -74,7 +74,7 @@ And restart postgresql to pick up the changes in the `pg_hba.conf` (or send SIGH
 sudo systemctl restart postgresql.service
 ```
 
-Test that everything works and create the DB schema from [schema.sql]().
+Test that everything works and create the DB schema from [schema.sql](schema.sql).
 
 ```
 PGPASSWORD=rain_pwd psql -U rain_user -d rain_db < schema.sql
@@ -82,7 +82,7 @@ PGPASSWORD=rain_pwd psql -U rain_user -d rain_db < schema.sql
 
 ## Data storing
 
-Data storing is done using [rain.py]() script which expects [rain.cfg]() file holding database connection configuration in the same directory.
+Data storing is done using [rain.py](rain.py) script which expects [rain.cfg](rain.cfg) file holding database connection configuration in the same directory.
 Data collecting is done once every day, for the previous day. This can be easily automated using `cron`, by editing the `crontab` using `crontab -e` add following line:
 
 ```
