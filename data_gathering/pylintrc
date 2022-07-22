@@ -1,0 +1,6 @@
+[FORMAT]
+max-line-length=160
+
+[DESIGN]
+max-args=6
+max-locals=16
