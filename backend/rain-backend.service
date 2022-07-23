@@ -1,0 +1,27 @@
+[Unit]
+Description=rain-backend
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/node ${BUILD_PATH}/build/index.js
+WorkingDirectory=${WORKDIR_PATH}
+
+User=root  # user root is required to access the letsencrypt certificates, otherwise nouser would be enough
+Group=root  # group root is required to access the letsencrypt certificates, otherwise nogroup would be enough
+
+# Environment variables:
+Environment=NODE_ENV=production
+
+# Allow many incoming connections
+LimitNOFILE=infinity
+
+# Allow core dumps for debugging
+LimitCORE=infinity
+
+StandardInput=null
+StandardOutput=syslog
+StandardError=syslog
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
