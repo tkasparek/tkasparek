@@ -7,11 +7,10 @@ import sys
 from datetime import datetime, timedelta
 from pathlib import Path
 
+import psycopg2
 import requests
 from lxml import html
-import psycopg2
 from psycopg2.extras import execute_values
-
 
 # The table on CHMI has 2 extra columns inserted into it so we need to map their columns into corresponding hour
 COLUMN_MAP = [(2, 1), (3, 2), (4, 3), (5, 4), (6, 5), (7, 6), (8, 7), (10, 8), (11, 9), (12, 10), (13, 11), (14, 12), (15, 13),
