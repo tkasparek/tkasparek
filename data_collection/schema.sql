@@ -165,3 +165,41 @@ CREATE TRIGGER refresh_daily_avgs_tg
     AFTER INSERT OR UPDATE OR DELETE OR TRUNCATE
     ON rain_data FOR EACH STATEMENT
     EXECUTE PROCEDURE refresh_daily_avgs();
+
+-- river measuring station
+CREATE TABLE river_station (
+    id SERIAL,
+    chmi_id INT NOT NULL UNIQUE,  -- ID used by CHMI application
+    name TEXT NOT NULL,
+    gauge TEXT NOT NULL,
+    category TEXT NOT NULL,
+    basin_number TEXT NOT NULL,
+    municipality TEXT NOT NULL,
+    gauge_operator TEXT,
+
+    flood_watch DECIMAL(5,1),
+    flood_warning DECIMAL(5,1),
+    flooding DECIMAL(5,1),
+    extreme_flooding DECIMAL(5,1),
+    drought DECIMAL(5,1),
+    unit TEXT,
+
+    warning_valid TEXT,
+
+    PRIMARY KEY (id)
+) TABLESPACE pg_default;
+
+CREATE TABLE IF NOT EXISTS river_data (
+    id BIGSERIAL,
+    river_station_id INT NOT NULL,
+    measurement_time TIMESTAMP,
+    gauge INT,
+    flow NUMERIC(8,4),
+    temperature NUMERIC(5,2),
+    note TEXT,
+    PRIMARY KEY (id),
+    UNIQUE(river_station_id, measurement_time),
+    CONSTRAINT river_station_id
+        FOREIGN KEY (river_station_id)
+        REFERENCES river_station (id)
+) TABLESPACE pg_default;
